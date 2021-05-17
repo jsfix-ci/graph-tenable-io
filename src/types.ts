@@ -1,19 +1,14 @@
 import {
-  GraphClient,
-  IntegrationExecutionContext,
-  PersisterClient,
-} from "@jupiterone/jupiter-managed-integration-sdk";
+  IntegrationInstanceConfig,
+  IntegrationStepExecutionContext,
+} from '@jupiterone/integration-sdk-core';
 
-import TenableClient from "./tenable/TenableClient";
+export type IntegrationStepContext = IntegrationStepExecutionContext<
+  IntegrationConfig
+>;
 
-export interface TenableIntegrationContext extends IntegrationExecutionContext {
-  graph: GraphClient;
-  persister: PersisterClient;
-  provider: TenableClient;
-  account: Account;
-}
-
-export interface Account {
-  id: string;
-  name: string;
+export interface IntegrationConfig extends IntegrationInstanceConfig {
+  accessKey: string;
+  secretKey: string;
+  retryMaxAttempts?: number;
 }

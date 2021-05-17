@@ -2,6 +2,12 @@ export interface Dictionary<T> {
   [key: string]: T;
 }
 
+export interface ClientOptions {
+  accessToken: string;
+  secretToken: string;
+  retryMaxAttempts?: number;
+}
+
 // -- https://cloud.tenable.com/users
 
 export interface User {
@@ -52,19 +58,19 @@ export interface RecentScanSummary {
 }
 
 export enum ScanStatus {
-  Completed = "completed",
-  Aborted = "aborted",
-  Empty = "empty",
-  Imported = "imported",
-  Pending = "pending",
-  Running = "running",
-  Resuming = "resuming",
-  Canceling = "canceling",
-  Canceled = "canceled",
-  Pausing = "pausing",
-  Paused = "paused",
-  Stopping = "stopping",
-  Stopped = "stopped",
+  Completed = 'completed',
+  Aborted = 'aborted',
+  Empty = 'empty',
+  Imported = 'imported',
+  Pending = 'pending',
+  Running = 'running',
+  Resuming = 'resuming',
+  Canceling = 'canceling',
+  Canceled = 'canceled',
+  Pausing = 'pausing',
+  Paused = 'paused',
+  Stopping = 'stopping',
+  Stopped = 'stopped',
 }
 
 // -- https://cloud.tenable.com/scans/:scanId
@@ -112,7 +118,7 @@ export interface ScanInfo {
   scan_type: string;
   targets: string;
   alt_targets_used: boolean;
-  "pci-can-upload": boolean;
+  'pci-can-upload': boolean;
   is_archived: boolean;
   timestamp: number;
   haskb: boolean;
@@ -462,34 +468,34 @@ export interface TenableDataModel {
 }
 
 export enum Method {
-  GET = "get",
-  POST = "post",
+  GET = 'get',
+  POST = 'post',
 }
 
 // Generic Export Types
 
 export enum ExportStatus {
-  Queued = "QUEUED",
-  Processing = "PROCESSING",
-  Finished = "FINISHED",
-  Cancelled = "CANCELLED",
-  Error = "ERROR",
+  Queued = 'QUEUED',
+  Processing = 'PROCESSING',
+  Finished = 'FINISHED',
+  Cancelled = 'CANCELLED',
+  Error = 'ERROR',
 }
 
 // Export Vulnerability Types
 
 export enum VulnerabilitySeverity {
-  Info = "info",
-  Low = "low",
-  Medium = "medium",
-  High = "high",
-  Critical = "critical",
+  Info = 'info',
+  Low = 'low',
+  Medium = 'medium',
+  High = 'high',
+  Critical = 'critical',
 }
 
 export enum VulnerabilityState {
-  Open = "open",
-  Reopened = "reopened",
-  Fixed = "fixed",
+  Open = 'open',
+  Reopened = 'reopened',
+  Fixed = 'fixed',
 }
 
 // Note: By default, vulnerability exports will only include

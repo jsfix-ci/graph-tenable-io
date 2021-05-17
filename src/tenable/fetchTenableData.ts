@@ -1,4 +1,4 @@
-import TenableClient from "./TenableClient";
+import { Client } from './client';
 import {
   Container,
   ContainerFinding,
@@ -7,10 +7,10 @@ import {
   ContainerUnwantedProgram,
   Dictionary,
   TenableDataModel,
-} from "./types";
+} from './types';
 
-export default async function fetchTenableData(
-  client: TenableClient,
+export async function fetchTenableData(
+  client: Client,
 ): Promise<TenableDataModel> {
   const [containers] = await Promise.all([client.fetchContainers()]);
 
@@ -32,7 +32,7 @@ export default async function fetchTenableData(
 
 async function fetchReportsWithContainerVulnerabilities(
   containers: Container[],
-  client: TenableClient,
+  client: Client,
 ): Promise<{
   reports: ContainerReport[];
   malwares: Dictionary<ContainerMalware[]>;
@@ -43,7 +43,7 @@ async function fetchReportsWithContainerVulnerabilities(
   const findings: Dictionary<ContainerFinding[]> = {};
   const unwantedPrograms: Dictionary<ContainerUnwantedProgram[]> = {};
   const reports: ContainerReport[] = await Promise.all(
-    containers.map(async item => {
+    containers.map(async (item) => {
       const report: ContainerReport = await client.fetchReportByImageDigest(
         item.digest,
       );

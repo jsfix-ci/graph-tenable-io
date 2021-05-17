@@ -1,19 +1,11 @@
-import { IntegrationInvocationConfig } from "@jupiterone/jupiter-managed-integration-sdk";
+import { IntegrationInvocationConfig } from '@jupiterone/integration-sdk-core';
+import { integrationSteps } from './steps';
+import { instanceConfigFields } from './instanceConfigFields';
+import { validateInvocation } from './validateInvocation';
+import { IntegrationConfig } from './types';
 
-import executionHandler from "./executionHandler";
-import invocationValidator from "./invocationValidator";
-
-export const stepFunctionsInvocationConfig: IntegrationInvocationConfig = {
-  invocationValidator,
-  integrationStepPhases: [
-    {
-      steps: [
-        {
-          id: "synchronize",
-          name: "Synchronize",
-          executionHandler,
-        },
-      ],
-    },
-  ],
+export const invocationConfig: IntegrationInvocationConfig<IntegrationConfig> = {
+  instanceConfigFields,
+  validateInvocation,
+  integrationSteps,
 };
