@@ -1,0 +1,43 @@
+{
+  "name": "@jupiterone/graph-tenable-cloud",
+  "version": "6.0.1",
+  "description": "A JupiterOne Integration",
+  "license": "MPL-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "j1-integration collect",
+    "graph": "j1-integration visualize",
+    "graph:types": "j1-integration visualize-types",
+    "lint": "eslint . --cache --fix --ext .ts,.tsx",
+    "format": "prettier --write '**/*.{ts,js,json,css,md,yml}'",
+    "type-check": "tsc",
+    "test": "jest",
+    "test:env": "LOAD_ENV=1 yarn test",
+    "test:ci": "yarn lint && yarn type-check && yarn test",
+    "build": "tsc -p tsconfig.dist.json --declaration",
+    "prepush": "yarn lint && yarn type-check && jest --changedSince master",
+    "prepack": "yarn build"
+  },
+  "peerDependencies": {
+    "@jupiterone/integration-sdk-core": "^6.0.0"
+  },
+  "devDependencies": {
+    "@jupiterone/integration-sdk-core": "^6.0.0",
+    "@jupiterone/integration-sdk-dev-tools": "^6.0.0",
+    "@jupiterone/integration-sdk-testing": "^6.0.0",
+    "@types/node-fetch": "^2.5.10"
+  },
+  "dependencies": {
+    "@lifeomic/attempt": "^3.0.0",
+    "date-fns": "^2.21.3",
+    "node-fetch": "^2.6.1",
+    "p-map": "^4.0.0"
+  }
+}
