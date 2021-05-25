@@ -39,7 +39,7 @@ export class Client {
     return response;
   }
 
-  private async makeRequest<T>(
+  protected async makeRequest<T>(
     url: string,
     method: Method,
     headers: {} = {},
