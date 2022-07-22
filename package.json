@@ -34,7 +34,7 @@
     "@jupiterone/tenable-client-nodejs": "^0.1.3",
     "@lifeomic/attempt": "^3.0.0",
     "date-fns": "^2.21.3",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^3.2.9",
     "p-map": "^4.0.0"
   },
   "peerDependencies": {
